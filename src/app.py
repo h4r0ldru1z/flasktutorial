@@ -17,6 +17,12 @@ def add_new_todo():
     print("Incoming request with the following body", request_body)
     return jsonify(todos), 200
 
+@app.route('/todos/<int:position>', methods=['DELETE'])
+def delete_todo(position):
+    del todos[position]
+    print("This is the position to delete: ",position)
+    return jsonify(todos)
+
 #@app.route('/todos', methods=['POST'])
 #def add_new_todo():
 #    request_body = request.data
